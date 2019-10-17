@@ -16,4 +16,5 @@ This tool loads the list of IFUNC functions in libc and prints out the function 
 0x189070 __memcpy_chk_avx_unaligned_erms
 0x168e20 __memcpy_chk_ssse3_back
 0x1638b0 __memcpy_chk_ssse3
+...
 ```
