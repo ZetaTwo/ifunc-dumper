@@ -77,9 +77,8 @@ int main() {
 
     for(const char** function_name = function_names; *function_name; function_name++) {
         size_t num_entries = __libc_ifunc_impl_list(*function_name, entries, 128);
-        //printf("%s (%ld)\n", *function_name, num_entries);
         for(size_t i = 0; i < num_entries; i++) {
-            printf("%p %s\n", entries[i].fn - libc_base, entries[i].name);
+            printf("%p %s\n", (void*)(entries[i].fn - libc_base), entries[i].name);
         }
     }
 
