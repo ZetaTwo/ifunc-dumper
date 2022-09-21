@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdint.h>
 
+#define MAX_NUM_IMPL 256
+
 //From "include/ifunc-impl-list.h"
 struct libc_ifunc_impl
 {
@@ -72,13 +74,13 @@ uintptr_t find_libc_base() {
 }
 
 int main() {
-    struct libc_ifunc_impl entries[128];
+    struct libc_ifunc_impl entries[MAX_NUM_IMPL];
     uintptr_t libc_base = find_libc_base();
 
     for(const char** function_name = function_names; *function_name; function_name++) {
-        size_t num_entries = __libc_ifunc_impl_list(*function_name, entries, 128);
+        size_t num_entries = __libc_ifunc_impl_list(*function_name, entries, MAX_NUM_IMPL);
         for(size_t i = 0; i < num_entries; i++) {
-            printf("%p %s\n", (void*)(entries[i].fn - libc_base), entries[i].name);
+            printf("%p %s\n", (void*)((uintptr_t)entries[i].fn - (uintptr_t)libc_base), entries[i].name);
         }
     }
 
