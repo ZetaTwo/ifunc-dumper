@@ -18,54 +18,7 @@ struct libc_ifunc_impl
 };
 
 extern size_t __libc_ifunc_impl_list (const char *name, struct libc_ifunc_impl *array, size_t max);
-
-const char* function_names[] = {
-    "__memcpy_chk",
-    "__memmove_chk",
-    "__mempcpy_chk",
-    "__memset_chk",
-    "__wmemset_chk",
-    "memchr",
-    "memcmp",
-    "memcpy",
-    "memmove",
-    "mempcpy",
-    "memrchr",
-    "memset",
-    "rawmemchr",
-    "stpcpy",
-    "stpncpy",
-    "strcasecmp",
-    "strcasecmp_l",
-    "strcat",
-    "strchr",
-    "strchrnul",
-    "strcmp",
-    "strcpy",
-    "strcspn",
-    "strlen",
-    "strncasecmp",
-    "strncasecmp_l",
-    "strncat",
-    "strncmp",
-    "strncpy",
-    "strnlen",
-    "strpbrk",
-    "strrchr",
-    "strspn",
-    "strstr",
-    "wcschr",
-    "wcscmp",
-    "wcscpy",
-    "wcslen",
-    "wcsncmp",
-    "wcsnlen",
-    "wcsrchr",
-    "wmemchr",
-    "wmemcmp",
-    "wmemset", 
-    NULL
-};
+extern const char* function_names[];
 
 uintptr_t find_libc_base() {
     uintptr_t libc_pointer;
